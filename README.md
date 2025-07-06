@@ -6,26 +6,26 @@
 
 ## 🚀 Features
 
-### 🔍 Real-Time Hand & Wrist Detection
+### Real-Time Hand & Wrist Detection
 - Utilizes **TensorFlow.js Handpose** model to accurately detect and track the user's wrist and hand landmarks through their webcam.
 - Dynamically adjusts watch position to align with wrist movement in real time.
 
-### ⌚ Smart Watch Overlay
+### Smart Watch Overlay
 - Allows users to virtually try on different watch images.
 - Supports **rotation**, **scaling**, and **mirroring** to match the natural position and orientation of the wrist.
 - Overlays are applied precisely using landmark-based mapping and Canvas API rendering.
 
-### 🧼 Background Removal for Watch Images
+### Background Removal for Watch Images
 - Upload any watch image and automatically remove the background.
 - Ensures clean overlays that blend naturally with the video feed.
 
-### 🖼️ Gesture-Based Zoom & Resize
+### Gesture-Based Zoom & Resize
 - Users can zoom in/out on the watch or adjust its size to achieve a natural fit using intuitive hand gestures or manual controls.
 
-### 💾 Export Functionality
+### Export Functionality
 - Capture a snapshot of your virtual try-on session with a single click and download the image.
 
-### 📱 Fully Responsive UI
+### Fully Responsive UI
 - Clean, modern, and mobile-friendly design using **Tailwind CSS**.
 - Works across all major desktop and mobile browsers.
 
