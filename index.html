@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wristify – Virtual Watch Try-On</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose@0.0.7/dist/handpose.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <main class="max-w-4xl mx-auto px-6 py-10">
+    <header class="text-center mb-10">
+      <h1 class="text-5xl font-bold mb-2 text-blue-700">Wristify</h1>
+      <p class="text-lg text-gray-600">A Seamless Virtual Try-On Experience for Wrist Watches</p>
+    </header>
+
+    <section class="bg-white p-6 rounded-xl shadow mb-10">
+      <h2 class="text-2xl font-semibold mb-4">🔧 How to Use</h2>
+      <ol class="list-decimal list-inside text-gray-700 space-y-2">
+        <li>Select your preferred hand (left or right).</li>
+        <li>Upload a watch image (clear, front-facing).</li>
+        <li>Allow webcam access for real-time detection.</li>
+        <li>Position your hand naturally in front of the camera.</li>
+        <li>The watch will be placed and adjusted automatically.</li>
+        <li>Move and rotate your hand to view from different angles.</li>
+      </ol>
+      <div class="mt-4">
+        <p class="font-medium text-gray-600 mb-2">📌 Tips for Best Results:</p>
+        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+          <li>Use under good lighting conditions.</li>
+          <li>Plain backgrounds improve detection.</li>
+          <li>Keep your wrist fully visible.</li>
+        </ul>
+      </div>
+    </section>
+
+        <!-- Hand Selection -->
+        <div id="hand-selection" class="hand-selection mb-5">
+            <h3 class="text-lg font-semibold text-gray-700 mb-2">Select Which Hand to Try Watch On:</h3>
+            <div class="hand-buttons flex gap-3">
+                <button id="leftHandBtn" class="hand-button bg-blue-100 px-4 py-2 rounded flex items-center hover:bg-blue-200">
+                    <span class="material-icons mr-2">back_hand</span>
+                    Left Hand
+                </button>
+                <button id="rightHandBtn" class="hand-button bg-blue-100 px-4 py-2 rounded flex items-center hover:bg-blue-200">
+                    <span class="material-icons mr-2">front_hand</span>
+                    Right Hand
+                </button>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">Choose the hand you want to wear the watch on</p>
+        </div>
+
+        <div id="status-container" class="mb-4">
+            <div class="detection-info">
+                <div>
+                    <span id="statusIndicator" class="status-indicator inactive"></span>
+                    <span id="detectionStatus" class="text-blue-600 font-medium">Please select a hand first</span>
+                </div>
+                <div id="handInfo" class="text-sm text-gray-600"></div>
+            </div>
+        </div>
+
+        <div class="video-container relative">
+            <video id="videoElement" class="hidden"></video>
+            <canvas id="overlayCanvas"></canvas>
+            <canvas id="watchCanvas"></canvas>
+            <div id="palmIndicator" class="palm-indicator hidden"></div>
+        </div>
+
+        <div class="controls mt-6 flex flex-col items-center">
+            <input type="file" id="imageUpload" accept="image/*" class="hidden">
+            <div class="flex flex-wrap justify-center gap-2">
+                <button id="uploadButton" class="upload-button bg-green-500 text-white px-4 py-2 rounded flex items-center hover:bg-green-600">
+                    <i class="material-icons mr-2">watch</i> Upload Watch Image
+                </button>
+                <button id="toggleDetection" class="control-button bg-blue-500 text-white px-4 py-2 rounded flex items-center hover:bg-blue-600" disabled>
+                    <i class="material-icons mr-2">play_arrow</i> Start Detection
+                </button>
+                <button id="exportImage" class="control-button bg-gray-500 text-white px-4 py-2 rounded flex items-center hover:bg-gray-600">
+                    <i class="material-icons mr-2">download</i> Save Image
+                </button>
+            </div>
+            <div id="feedback" class="mt-3 text-green-600 font-semibold"></div>
+            <div id="error" class="error-message text-red-600 font-medium mt-2"></div>
+        </div>
+
+        <div class="watch-preview mt-4 flex justify-center">
+            <img id="watchImage" src="#" alt="Watch Preview" class="hidden max-w-sm rounded-lg shadow-sm">
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
