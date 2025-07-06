@@ -1,4 +1,4 @@
-# 🕒 Wristify – Virtual Watch Try-On
+# ⌚ Wristify – Virtual Watch Try-On
 
 **Virtual Wrist Watch Try-On** is a browser-based Augmented Reality (AR) application that enables users to virtually try on wristwatches in real time using their webcam. Built using modern web technologies and TensorFlow.js, this project blends computer vision and an intuitive UI to deliver a seamless and interactive virtual fitting experience — no app installation required!
 
